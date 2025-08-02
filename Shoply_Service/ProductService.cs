@@ -1,8 +1,9 @@
 ﻿using Shoply_Server_Side.Models;
+using Shoply_Service;
 
 namespace Shoply_Server_Side.Services
 {
-    public class ProductService
+    public class IProductRepository : Shoply_Service.IProductRepository
     {
         public List<Product> products() {
             List<Product> list = new List<Product>
