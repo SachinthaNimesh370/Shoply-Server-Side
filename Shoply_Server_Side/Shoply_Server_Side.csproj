@@ -10,4 +10,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Shoply_Model\Shoply_Model.csproj" />
+    <ProjectReference Include="..\Shoply_Service\Shoply_Service.csproj" />
+  </ItemGroup>
+
 </Project>
