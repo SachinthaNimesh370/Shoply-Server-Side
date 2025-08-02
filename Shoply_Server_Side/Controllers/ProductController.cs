@@ -10,50 +10,26 @@ namespace Shoply_Server_Side.Controllers
     public class ProductController : ControllerBase 
     {
         private ProductService _productService;
+
+        //constructor
         public ProductController(ProductService productService) 
         {
             _productService = productService;
         }
 
-
-        [HttpPost("PostProducts")]
-        public IActionResult Abc(Models.Product pr) 
+        [HttpGet("all")]
+        public IActionResult GetAllProducts()
         {
-            return Ok(pr);
+            return Ok(_productService.products());
         }
 
-        [HttpGet("GetAbc")]
-        public String Product(String abs) { 
-            return "Sachintha :" + abs;
-        }
-
-        [HttpPost]
-        public String PostAbc() 
+        [HttpGet("search")]
+        public IActionResult searchProducts([FromQuery] int? id)
         {
-            return "Post SachinthaPost";
-        }
+            if (id is null)
+                return Ok(_productService.products());
 
-        [HttpPost("PostAbc")]
-        public IActionResult actionResult(String asd) { 
-            return Ok("Post SachinthaPost"+asd);
-        }
-
-        [HttpPost("allProducts")]
-        public IActionResult allProducts() {
-            var list = _productService.products();
-            Console.WriteLine("Number of products: " + list.Count);
-
-
-            return Ok(list.Count);
-        }
-
-        [HttpPost("{id?}")]
-        public IActionResult searchProducts(int? id)
-        {
-
-            if (id is null) return Ok(_productService.products);
             var list = _productService.products().Where(t => t.Id == id).ToList();
-
             return Ok(list);
         }
 
