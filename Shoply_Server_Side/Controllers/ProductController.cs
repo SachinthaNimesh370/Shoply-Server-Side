@@ -9,27 +9,27 @@ namespace Shoply_Server_Side.Controllers
     [ApiController]
     public class ProductController : ControllerBase 
     {
-        private ProductService _productService;
+        private IProductRepository _productRepo;
 
         //constructor
-        public ProductController(ProductService productService) 
+        public ProductController(IProductRepository productRepo) 
         {
-            _productService = productService;
+            _productRepo = productRepo;
         }
 
         [HttpGet("all")]
         public IActionResult GetAllProducts()
         {
-            return Ok(_productService.products());
+            return Ok(_productRepo.products());
         }
 
         [HttpGet("search")]
         public IActionResult searchProducts([FromQuery] int? id)
         {
             if (id is null)
-                return Ok(_productService.products());
+                return Ok(_productRepo.products());
 
-            var list = _productService.products().Where(t => t.Id == id).ToList();
+            var list = _productRepo.products().Where(t => t.Id == id).ToList();
             return Ok(list);
         }
 
