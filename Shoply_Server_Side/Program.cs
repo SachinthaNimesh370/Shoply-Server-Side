@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using Shoply_Data_Access;
 using Shoply_Server_Side.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,13 +16,17 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend",
         builder =>
         {
-            builder.WithOrigins("http://localhost:3000") //  Change to your frontend URL
+            builder.WithOrigins("http://localhost:3000", "https://localhost:3000") 
                    .AllowAnyHeader()
                    .AllowAnyMethod();
         });
 });
 
-builder.Services.AddScoped<IProductRepository>();
+//builder.Services.AddScoped<ProductSQLServer>();
+builder.Services.AddDbContext<ProductDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<IProductRepository, ProductSQLServer>();
+
 
 var app = builder.Build();
 
