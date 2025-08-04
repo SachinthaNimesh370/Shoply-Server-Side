@@ -8,16 +8,16 @@ namespace Shoply_Server_Side.Services
         public List<Product> products() {
             List<Product> list = new List<Product>
             {
-                new Product
-                {
-                    Id = 1,
-                    Title = "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-                    Price = 109.95,
-                    Description = "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-                    Category = "men's clothing",
-                    Image = "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-                    Rating = new Rating { Rate = 3.9, Count = 120 }
-                },
+                //new Product
+                //{
+                //    Id = 1,
+                //    Title = "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+                //    Price = 109.95,
+                //    Description = "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+                //    Category = "men's clothing",
+                //    Image = "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+                //    Rating = new Rating { Rate = 3.9, Count = 120 }
+                //},
                 new Product
                 {
                     Id = 2,
