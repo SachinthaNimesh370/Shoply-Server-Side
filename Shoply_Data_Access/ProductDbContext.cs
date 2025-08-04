@@ -10,6 +10,10 @@ namespace Shoply_Data_Access
 {
     public class ProductDbContext : DbContext
     {
+        public ProductDbContext(DbContextOptions<ProductDbContext> options)
+            : base(options)
+        {
+        }
         public DbSet<Product> Product { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
