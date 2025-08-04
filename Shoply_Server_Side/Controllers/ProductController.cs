@@ -17,7 +17,7 @@ namespace Shoply_Server_Side.Controllers
             _productRepo = productRepo;
         }
 
-        [HttpGet("all")]
+        [HttpGet]
         public IActionResult GetAllProducts()
         {
             return Ok(_productRepo.products());
